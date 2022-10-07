@@ -1,11 +1,11 @@
 import {DB} from "../constants.js";
 import sql from "../database/SQL_requests.js";
-import codes from "../httpCodes.json" assert {type: 'json'};
-import {loginAndEmailConfirmationRequired} from "../utils/access.js";
-import config from "../config.js";
+import codes from "../httpCodes.js";
+// import config from "../config.js";
 import express from "express";
 import bodyParser from "body-parser";
 import {corsMiddleware, errorMiddleware} from "../middleware.js";
+import {jsonResponse} from "../utils/utils.js";
 
 const app = express();
 app.use(bodyParser.json());
@@ -13,7 +13,7 @@ app.use(corsMiddleware);
 app.use(errorMiddleware);
 export default app;
 
-const MAX_SIZE = config.max_image_size;
+// const MAX_SIZE = config.max_image_size;
 
 
 // app.toLowerCase"/<imageId>.<imageExt>", async (req, res) => {
@@ -21,11 +21,11 @@ app.get("/:imageId(\\d+)", async (req, res) => {
     const imageId = req.params.imageId;
     const imageExt = req.params.imageExt;
 
-    const resp = await DB.execute(sql.selectImageById, [imageId])
+    const resp = await DB.execute(sql.selectImageById, [imageId]);
     if ((!resp) || ((imageExt !== undefined) && (resp['type'] !== imageExt)))
-        return Response("Изображение не найдено", codes.HTTP_NOT_FOUND)
-    const imageBytes = resp['bytes']
-    const imageLen = imageBytes.length
+        return jsonResponse(res, "Изображение не найдено", codes.HTTP_NOT_FOUND);
+    const imageBytes = resp['bytes'];
+    const imageLen = imageBytes.length;
 
     res.send(imageBytes);
     res.setHeader('Content-Type', `image/${resp["type"]}`);

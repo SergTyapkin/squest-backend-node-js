@@ -1,9 +1,9 @@
 import {jsonResponse} from "./utils/utils.js";
-import codes from "./httpCodes.json" assert {type: 'json'};
+import codes from "./httpCodes.js";
 import express from "express";
 import {corsMiddleware, errorMiddleware} from "./middleware.js";
 
-import user from "./subroutes/user.js"
+import user from "./subroutes/user.js";
 import admin from "./subroutes/admin.js";
 import quest from "./subroutes/quest.js";
 import branch from "./subroutes/branch.js";
@@ -31,17 +31,17 @@ app.use(errorMiddleware);
 
 
 api.get(`/`, async (req, res) => {
-  res.send("Это начальная страница API, а не сайт. Вiйди отсюда!");
+    res.send("Это начальная страница API, а не сайт. Вiйди отсюда!");
 });
 
 app.get('*', (req, res) => {
-  jsonResponse(res, "404 страница не найдена", codes.HTTP_NOT_FOUND);
+    jsonResponse(res, "404 страница не найдена", codes.HTTP_NOT_FOUND);
 });
 
 
 
 const HTTP_PORT = process.env.PORT || config.api_port;
 app.listen(HTTP_PORT, () => {
-  console.log('Server working on http://localhost:' + HTTP_PORT);
+    console.log('Server working on http://localhost:' + HTTP_PORT);
 });
 

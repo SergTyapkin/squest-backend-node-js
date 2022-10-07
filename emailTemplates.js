@@ -3,7 +3,7 @@ function _default_template(avatarUrl, fullName, htmlContent) {
     if (avatarUrl) {
         avatarDiv = `<img src="https://sergtyapkin.herokuapp.com/squest/api${avatarUrl}" height="80px" width="80px" alt="avatar" title="avatar" style="margin: 20px auto;border-radius: 40px"/>
             <br>
-        `
+        `;
     }
 
     let fullNameDiv = '';
@@ -11,7 +11,7 @@ function _default_template(avatarUrl, fullName, htmlContent) {
         fullNameDiv = `<span style="font-weight: bold;font-size: 22px;color: #f3f3f3;">${fullName},</span>
             <br>
             <br>
-        `
+        `;
     }
 
     return `
@@ -53,7 +53,7 @@ function _default_template(avatarUrl, fullName, htmlContent) {
             </div>
         </div>
     </div>
-    `
+    `;
 }
 
 export function restorePassword(avatarUrl, fullName, code) {
@@ -77,7 +77,7 @@ export function loginByCode(avatarUrl, fullName, code) {
         <div style="font-weight: bold;font-size: 25px;letter-spacing: 5px;color: #f3f3f3">${code}</div>
         <br>
         <span style="color: #d5d5d5">Кстати, он действителен всего час</span>     
-    `)
+    `);
 }
 
 
@@ -111,5 +111,5 @@ export function confirmEmail(avatarUrl, fullName, code) {
         <br>
         <br>
         <span>Ссылка для подтверждения действительна всего день</span>       
-    `)
+    `);
 }

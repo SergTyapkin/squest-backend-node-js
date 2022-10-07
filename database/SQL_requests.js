@@ -493,4 +493,4 @@ export default {
     deleteImageByIdAuthor: `
         DELETE FROM images
         WHERE id = $1 AND author = $2`
-}
+};

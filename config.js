@@ -25,4 +25,4 @@ export default {
     "SMTP_mail_server_use_tls": true,
     "mail_username": "squest.studio@gmail.com",
     "mail_password": process.env.MAIL_PASSWORD,
-}
+};
