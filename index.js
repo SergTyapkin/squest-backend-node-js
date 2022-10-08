@@ -27,7 +27,6 @@ const app = express();
 app.use('/api', api);
 app.use(errorMiddleware);
 app.use(corsMiddleware);
-app.use(errorMiddleware);
 
 
 api.get(`/`, async (req, res) => {
